@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		954B92C41D89EDDB006A76D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B92C31D89EDDB006A76D4 /* AppDelegate.swift */; };
-		954B92C61D89EDDB006A76D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B92C51D89EDDB006A76D4 /* ViewController.swift */; };
 		954B92C91D89EDDB006A76D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 954B92C71D89EDDB006A76D4 /* Main.storyboard */; };
 		954B92CB1D89EDDB006A76D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954B92CA1D89EDDB006A76D4 /* Assets.xcassets */; };
 		954B92CE1D89EDDB006A76D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 954B92CC1D89EDDB006A76D4 /* LaunchScreen.storyboard */; };
+		957686CA1D89F976009567F0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957686C91D89F976009567F0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		954B92C01D89EDDB006A76D4 /* Things to Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Things to Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		954B92C31D89EDDB006A76D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		954B92C51D89EDDB006A76D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		954B92C81D89EDDB006A76D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		954B92CA1D89EDDB006A76D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954B92CD1D89EDDB006A76D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		954B92CF1D89EDDB006A76D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957686C91D89F976009567F0 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				954B92C31D89EDDB006A76D4 /* AppDelegate.swift */,
-				954B92C51D89EDDB006A76D4 /* ViewController.swift */,
 				954B92C71D89EDDB006A76D4 /* Main.storyboard */,
+				957686C91D89F976009567F0 /* TableViewController.swift */,
 				954B92CA1D89EDDB006A76D4 /* Assets.xcassets */,
 				954B92CC1D89EDDB006A76D4 /* LaunchScreen.storyboard */,
 				954B92CF1D89EDDB006A76D4 /* Info.plist */,
@@ -137,8 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954B92C61D89EDDB006A76D4 /* ViewController.swift in Sources */,
 				954B92C41D89EDDB006A76D4 /* AppDelegate.swift in Sources */,
+				957686CA1D89F976009567F0 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +263,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PSZ5UE6XGM;
 				INFOPLIST_FILE = "Things to Do/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uva.Things-to-Do";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,6 +277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PSZ5UE6XGM;
 				INFOPLIST_FILE = "Things to Do/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "uva.Things-to-Do";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +304,7 @@
 				954B92D41D89EDDB006A76D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

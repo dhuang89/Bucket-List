@@ -12,26 +12,20 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue"]
     var itemBools = [false, false, false]
+    var direction = 0
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: Selector(("swiped:")))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
         
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: Selector(("swiped:")))
-        swipeUp.direction = .up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: Selector(("swiped:")))
+       /* let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector(("swiped:")))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
+        self.view.addGestureRecognizer(swipeLeft)*/
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -59,11 +53,20 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+
 
         // Configure the cell...
         cell.textLabel?.text = items[indexPath.row]
         
-        if !itemBools[indexPath.row] {
+        if itemBools[indexPath.row] {
             cell.accessoryType = .none
         } else {
             cell.accessoryType = .checkmark
@@ -73,25 +76,13 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let cell = tableView.cellForRow(at: indexPath)
+        print("here")
+        let cell = tableView.cellForRow(at: indexPath)
         
-        /*if cell?.accessoryType == .checkmark {
+        if cell?.accessoryType == .checkmark {
             cell?.accessoryType = .none
             itemBools[indexPath.row] = false
         } else {
-            cell?.accessoryType = .checkmark
-            itemBools[indexPath.row] = true
-        }*/
-    }
-    
-    func handleSwipe(sender: UISwipeGestureRecognizer, indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        if sender.direction == .left {
-            cell?.accessoryType = .none
-            itemBools[indexPath.row] = false
-        }
-        
-        if sender.direction == .right {
             cell?.accessoryType = .checkmark
             itemBools[indexPath.row] = true
         }
@@ -109,16 +100,9 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped Left")
                 
-            case UISwipeGestureRecognizerDirection.up:
-                print("Swiped Up")
-                
-            case UISwipeGestureRecognizerDirection.down:
-                print("Swiped Down")
-                
             default:
                 break
             }
-        
     }
     
     /*

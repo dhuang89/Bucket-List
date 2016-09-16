@@ -10,21 +10,14 @@ import UIKit
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var table: UITableView!
     var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue"]
     var itemBools = [false, false, false]
-    var direction = 0
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       /* let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)*/
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,19 +47,18 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
-
-
         // Configure the cell...
         cell.textLabel?.text = items[indexPath.row]
         
-        if itemBools[indexPath.row] {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeRight.direction = .right
+        cell.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
+        swipeLeft.direction = .left
+        cell.addGestureRecognizer(swipeLeft)
+        
+        if !itemBools[indexPath.row] {
             cell.accessoryType = .none
         } else {
             cell.accessoryType = .checkmark
@@ -75,7 +67,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("here")
         let cell = tableView.cellForRow(at: indexPath)
         
@@ -86,6 +78,16 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
             cell?.accessoryType = .checkmark
             itemBools[indexPath.row] = true
         }
+    }*/
+    
+    func checkOff(_ cell: UITableViewCell) {
+        print("checking off")
+        cell.accessoryType = .none
+    }
+    
+    func checkItem(_ cell: UITableViewCell) {
+        print("checking item")
+        cell.accessoryType = .checkmark
     }
     
     func swiped(gesture: UISwipeGestureRecognizer)
@@ -96,9 +98,21 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped Right")
+                let tapLocation = gesture.location(in: self.tableView)
+                if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                    if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
+                        checkOff(tappedCell)
+                    }
+                }
                 
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped Left")
+                let tapLocation = gesture.location(in: self.tableView)
+                if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                    if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
+                        checkItem(tappedCell)
+                    }
+                }
                 
             default:
                 break
@@ -115,13 +129,14 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     
     // Override to support editing the table view.
-  /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+  /*  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        
     }*/
     
 

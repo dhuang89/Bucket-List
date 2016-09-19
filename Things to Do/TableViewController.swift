@@ -8,22 +8,28 @@
 
 import UIKit
 
+var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue", "Finish this app"]
+
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var table: UITableView!
-    var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue"]
-    var itemBools = [false, false, false]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refresh() {
+        print("refreshing")
+        
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [NSIndexPath(row: 1, section: 1) as IndexPath], with: .automatic)
+        self.tableView.endUpdates()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +46,13 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("counting")
         return items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("loading cells")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         // Configure the cell...
@@ -58,11 +66,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         swipeLeft.direction = .left
         cell.addGestureRecognizer(swipeLeft)
         
-        if !itemBools[indexPath.row] {
-            cell.accessoryType = .none
-        } else {
-            cell.accessoryType = .checkmark
-        }
+        cell.accessoryType = .none
 
         return cell
     }
@@ -101,7 +105,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 let tapLocation = gesture.location(in: self.tableView)
                 if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
                     if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
-                        checkOff(tappedCell)
+                        checkItem(tappedCell)
                     }
                 }
                 
@@ -110,7 +114,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 let tapLocation = gesture.location(in: self.tableView)
                 if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
                     if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
-                        checkItem(tappedCell)
+                        checkOff(tappedCell)
                     }
                 }
                 
@@ -118,6 +122,8 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 break
             }
     }
+    
+
     
     /*
     // Override to support conditional editing of the table view.

@@ -1,0 +1,60 @@
+//
+//  AddViewController.swift
+//  Things to Do
+//
+//  Created by Dennis Huang on 9/19/16.
+//  Copyright © 2016 Dennis Huang. All rights reserved.
+//
+
+import UIKit
+
+class AddViewController: UIViewController {
+    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var newName: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        cancelButton.target = self
+        cancelButton.action = #selector(cancelAction)
+        doneButton.target = self
+        doneButton.action = #selector(finishAction)
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //cancel button function
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //done button function
+    @IBAction func finishAction(_ sender: UIBarButtonItem) {
+        let name = newName.text
+        items.append(name!)
+        for x in items {
+            print(x)
+        }
+        TableViewController().refresh()
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

@@ -8,9 +8,21 @@
 
 import UIKit
 
+var itemBools = [false, false, false, false]
 var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue", "Finish this app"]
+var currentInfo = ""
+var descriptions = ["Jump off a plane and land alive!", "Give Dean Groves a great high five!", "Stuck on the elite four", "I want a good grade in CS 4720"]
+var currentDes = ""
+var currentBool = false
+var currentIndexPath = IndexPath(row: 0, section: 0)
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
+    
+    @IBAction func showInfo(_ sender: UITableViewCell) {
+        let modalViewController = ShowInfoViewController()
+        modalViewController.modalPresentationStyle = .overCurrentContext
+        present(modalViewController, animated: true, completion: nil)
+    }
     
 
     override func viewDidLoad() {
@@ -66,32 +78,50 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         swipeLeft.direction = .left
         cell.addGestureRecognizer(swipeLeft)
         
-        cell.accessoryType = .none
+        if !itemBools[indexPath.row] {
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .checkmark
+        }
 
         return cell
     }
     
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("here")
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("showing item info")
         let cell = tableView.cellForRow(at: indexPath)
+        currentInfo = (cell?.textLabel?.text)!
+        currentDes = descriptions[indexPath.row]
+        currentBool = itemBools[indexPath.row]
+        currentIndexPath = indexPath
+        showInfo(cell!)
         
-        if cell?.accessoryType == .checkmark {
-            cell?.accessoryType = .none
-            itemBools[indexPath.row] = false
-        } else {
-            cell?.accessoryType = .checkmark
-            itemBools[indexPath.row] = true
-        }
-    }*/
+    }
     
-    func checkOff(_ cell: UITableViewCell) {
-        print("checking off")
+    func checkRemove(_ cell: UITableViewCell) {
+        print("removing check")
         cell.accessoryType = .none
     }
     
     func checkItem(_ cell: UITableViewCell) {
         print("checking item")
         cell.accessoryType = .checkmark
+    }
+    
+    func checkRemove2(_ indexPath: IndexPath) {
+        print("removing check")
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
+        itemBools[indexPath.row] = false
+        self.tableView.reloadData()
+    }
+    
+    func checkItem2(_ indexPath: IndexPath) {
+        print("checking item")
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+        itemBools[indexPath.row] = true
+        self.tableView.reloadData()
     }
     
     func swiped(gesture: UISwipeGestureRecognizer)
@@ -104,6 +134,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 print("Swiped Right")
                 let tapLocation = gesture.location(in: self.tableView)
                 if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                    itemBools[tapIndexPath.row] = true
                     if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
                         checkItem(tappedCell)
                     }
@@ -113,8 +144,9 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 print("Swiped Left")
                 let tapLocation = gesture.location(in: self.tableView)
                 if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                    itemBools[tapIndexPath.row] = false
                     if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
-                        checkOff(tappedCell)
+                        checkRemove(tappedCell)
                     }
                 }
                 

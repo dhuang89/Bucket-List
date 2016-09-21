@@ -21,6 +21,7 @@
 		950DC5741D90497400832730 /* The-Bucket-List-Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "The-Bucket-List-Logo.jpg"; sourceTree = "<group>"; };
 		950DC5761D9049C700832730 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		950DC5781D904F5E00832730 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		950DC57A1D907BC300832730 /* ShowInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInfoViewController.swift; sourceTree = "<group>"; };
 		954B92C01D89EDDB006A76D4 /* Things to Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Things to Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		954B92C31D89EDDB006A76D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		954B92C81D89EDDB006A76D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 				954B92CF1D89EDDB006A76D4 /* Info.plist */,
 				950DC5761D9049C700832730 /* Launch Screen.storyboard */,
 				950DC5781D904F5E00832730 /* AddViewController.swift */,
+				950DC57A1D907BC300832730 /* ShowInfoViewController.swift */,
 			);
 			path = "Things to Do";
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 				7E906A161D9082B100762E25 /* AppDelegate.swift in Sources */,
 				957686CA1D89F976009567F0 /* TableViewController.swift in Sources */,
 				950DC5791D904F5E00832730 /* AddViewController.swift in Sources */,
+				950DC57B1D907BC300832730 /* ShowInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

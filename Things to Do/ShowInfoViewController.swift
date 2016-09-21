@@ -1,0 +1,69 @@
+//
+//  ShowInfoViewController.swift
+//  Things to Do
+//
+//  Created by Dennis Huang on 9/19/16.
+//  Copyright © 2016 Dennis Huang. All rights reserved.
+//
+
+import UIKit
+
+class ShowInfoViewController: UIViewController {
+    
+    @IBOutlet weak var infoTitle: UITextField!
+    @IBOutlet weak var cancelButton2: UIBarButtonItem!
+    @IBOutlet weak var infoDes: UITextView!
+    @IBOutlet weak var infoComplete: UISegmentedControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        cancelButton2.target = self
+        cancelButton2.action = #selector(cancelAction2)
+        infoTitle.text = currentInfo
+        infoDes.text = currentDes
+        
+        if currentBool == true {
+            infoComplete.selectedSegmentIndex = 0
+        } else {
+            infoComplete.selectedSegmentIndex = 1
+        }
+        infoComplete.addTarget(self, action: #selector(changeStatus), for: .valueChanged)
+        infoComplete.addTarget(self, action: #selector(changeStatus), for: .touchUpInside)
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //cancel button function
+    @IBAction func cancelAction2(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func changeStatus(_ sender: UISegmentedControl) {
+        switch infoComplete.selectedSegmentIndex {
+        case 0:
+            print("case 0")
+            TableViewController().checkItem2(currentIndexPath)
+        case 1:
+            print("case 1")
+            TableViewController().checkRemove2(currentIndexPath)
+        default:
+            break
+        }
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}

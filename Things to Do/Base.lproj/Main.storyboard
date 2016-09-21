@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BTt-U6-3QY" id="nFO-Wz-c41">
-                                    <frame key="frameInset" width="320" height="43"/>
+                                    <frame key="frameInset" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -95,7 +95,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BtC-YX-0wn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjf-X8-8b1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yjf-X8-8b1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -111,10 +111,9 @@
         <!--Navigation Controller-->
         <scene sceneID="4BC-gu-Kt9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vIk-E2-yb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iei-86-cCM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oub-bz-JmJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oub-bz-JmJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -123,6 +122,7 @@
                         <segue destination="ddo-CR-XDg" kind="relationship" relationship="rootViewController" id="c6l-CW-IU0"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vIk-E2-yb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1984" y="185"/>
         </scene>

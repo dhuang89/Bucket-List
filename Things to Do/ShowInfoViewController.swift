@@ -10,6 +10,7 @@ import UIKit
 
 class ShowInfoViewController: UIViewController {
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var infoTitle: UITextField!
     @IBOutlet weak var cancelButton2: UIBarButtonItem!
     @IBOutlet weak var infoDes: UITextView!
@@ -22,6 +23,8 @@ class ShowInfoViewController: UIViewController {
         cancelButton2.action = #selector(cancelAction2)
         infoTitle.text = currentInfo
         infoDes.text = currentDes
+        saveButton.target = self
+        saveButton.action = #selector(saveAction)
         
         if currentBool == true {
             infoComplete.selectedSegmentIndex = 0
@@ -43,13 +46,20 @@ class ShowInfoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //save button function
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "unwindToTable", sender: self)
+    }
+    
     @IBAction func changeStatus(_ sender: UISegmentedControl) {
         switch infoComplete.selectedSegmentIndex {
         case 0:
             print("case 0")
+            print(currentIndexPath)
             TableViewController().checkItem2(currentIndexPath)
         case 1:
             print("case 1")
+            print(currentIndexPath)
             TableViewController().checkRemove2(currentIndexPath)
         default:
             break

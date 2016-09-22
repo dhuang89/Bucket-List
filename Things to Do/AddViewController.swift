@@ -13,6 +13,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var newName: UITextField!
+    @IBOutlet weak var newDescription: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +22,18 @@ class AddViewController: UIViewController {
         cancelButton.action = #selector(cancelAction)
         doneButton.target = self
         doneButton.action = #selector(finishAction)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     //cancel button function
@@ -36,11 +43,8 @@ class AddViewController: UIViewController {
     
     //done button function
     @IBAction func finishAction(_ sender: UIBarButtonItem) {
-        let name = newName.text
-        items.append(name!)
-        for x in items {
-            print(x)
-        }
+        currentName = newName.text!
+        newDesc = newDescription.text!
         self.performSegue(withIdentifier: "addToTable", sender: self)
         
     }

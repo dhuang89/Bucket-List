@@ -74,6 +74,8 @@ var currentBool = false
 var currentIndexPath = IndexPath(row: 0, section: 0)
 
 var currentChange = 0
+var currentName = ""
+var newDesc = ""
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
@@ -90,11 +92,13 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func addToTable(segue: UIStoryboardSegue) {
-        print("here")
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: [NSIndexPath(row: 0, section: 3) as IndexPath], with: .automatic)
-        self.tableView.endUpdates()
-        self.tableView.reloadData()
+        let newIndexPath = IndexPath(row: items.count, section: 0)
+        itemBools.append(false)
+        descriptions.append(newDesc)
+        print(newIndexPath)
+        items.append(currentName)
+        print(currentName)
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -122,14 +126,13 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("counting")
         return items.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("loading cells")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        print(indexPath)
         
         // Configure the cell...
         cell.textLabel?.text = items[indexPath.row]

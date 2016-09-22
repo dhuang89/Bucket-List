@@ -33,12 +33,18 @@ class ShowInfoViewController: UIViewController {
         }
         infoComplete.addTarget(self, action: #selector(changeStatus), for: .valueChanged)
         infoComplete.addTarget(self, action: #selector(changeStatus), for: .touchUpInside)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     //cancel button function

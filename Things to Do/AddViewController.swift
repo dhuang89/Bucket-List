@@ -41,8 +41,7 @@ class AddViewController: UIViewController {
         for x in items {
             print(x)
         }
-        TableViewController().refresh()
-        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "addToTable", sender: self)
         
     }
     

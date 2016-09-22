@@ -22,7 +22,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="aYs-UN-PYW" kind="presentation" id="f9E-M5-SPq"/>
+                                    <segue destination="aYs-UN-PYW" kind="presentation" identifier="Show" id="f9E-M5-SPq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -43,9 +43,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UfR-Gi-2N2">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO5-AK-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -90,9 +87,11 @@
                         <outlet property="cancelButton" destination="mFa-dh-9T1" id="eDw-Iz-51W"/>
                         <outlet property="doneButton" destination="SXH-Ij-SoU" id="iRj-iv-hos"/>
                         <outlet property="newName" destination="8zt-Z6-H08" id="rPQ-Wh-sxR"/>
+                        <segue destination="Td3-v0-T2e" kind="unwind" identifier="addToTable" unwindAction="addToTableWithSegue:" id="JPt-qH-yCW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3i-9M-bGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Td3-v0-T2e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2769" y="-63"/>
         </scene>
@@ -193,7 +192,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BtC-YX-0wn" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yjf-X8-8b1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjf-X8-8b1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -211,7 +210,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iei-86-cCM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="oub-bz-JmJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oub-bz-JmJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

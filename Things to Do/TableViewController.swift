@@ -70,15 +70,29 @@ var currentDes = ""
 var currentBool = false
 var currentIndexPath = IndexPath(row: 0, section: 0)
 
+var currentChange = 0
+
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
-    /*@IBAction func showInfo(_ sender: UITableViewCell) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ShowInfoViewController") as! ShowInfoViewController
-        self.present(vc, animated: true, completion: nil)
-    }*/
+    @IBAction func unwindToTable(segue: UIStoryboardSegue){
+        let cell = tableView.cellForRow(at: currentIndexPath)
+        
+        if currentChange == 0 {
+            cell?.accessoryType = .checkmark
+            itemBools[currentIndexPath.row] = true
+        } else {
+            cell?.accessoryType = .none
+            itemBools[currentIndexPath.row] = false
+        }
+    }
     
-    @IBAction func unwindToTable(segue: UIStoryboardSegue){}
+    @IBAction func addToTable(segue: UIStoryboardSegue) {
+        print("here")
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [NSIndexPath(row: 0, section: 3) as IndexPath], with: .automatic)
+        self.tableView.endUpdates()
+        self.tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,26 +104,6 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showInfo()
-    }*/
-    
-    func showInfo() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let vc = self
-        let vc = storyboard.instantiateViewController(withIdentifier: "ShowInfoViewController") as! ShowInfoViewController
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    func refresh() {
-        print("refreshing")
-        
-        self.tableView.beginUpdates()
-        self.tableView.insertRows(at: [NSIndexPath(row: 1, section: 1) as IndexPath], with: .automatic)
-        self.tableView.endUpdates()
-        self.tableView.reloadData()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -161,7 +155,6 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         currentDes = descriptions[indexPath.row]
         currentBool = itemBools[indexPath.row]
         currentIndexPath = indexPath
-        showInfo()
         
     }
     
@@ -173,32 +166,6 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     func checkItem(_ cell: UITableViewCell) {
         print("checking item")
         cell.accessoryType = .checkmark
-    }
-    
-    func checkRemove2(_ indexPath: IndexPath) {
-        print("removing check")
-        print(indexPath)
-        let cell = tableView.cellForRow(at: indexPath)
-        print(cell?.textLabel?.text)
-        cell?.accessoryType = .none
-        itemBools[indexPath.row] = false
-        //self.tableView.reloadData()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    func checkItem2(_ indexPath: IndexPath) {
-        print("checking item")
-        print(indexPath)
-        let cell = tableView.cellForRow(at: indexPath)
-        print(cell?.textLabel?.text)
-        cell?.accessoryType = .checkmark
-        itemBools[indexPath.row] = true
-        //self.tableView.reloadData()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     func swiped(gesture: UISwipeGestureRecognizer)

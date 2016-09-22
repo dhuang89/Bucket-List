@@ -54,13 +54,9 @@ class ShowInfoViewController: UIViewController {
     @IBAction func changeStatus(_ sender: UISegmentedControl) {
         switch infoComplete.selectedSegmentIndex {
         case 0:
-            print("case 0")
-            print(currentIndexPath)
-            TableViewController().checkItem2(currentIndexPath)
+            currentChange = 0
         case 1:
-            print("case 1")
-            print(currentIndexPath)
-            TableViewController().checkRemove2(currentIndexPath)
+            currentChange = 1
         default:
             break
         }

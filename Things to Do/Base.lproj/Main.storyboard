@@ -43,6 +43,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UfR-Gi-2N2">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZO5-AK-KZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -112,7 +115,7 @@
         <!--Item Info-->
         <scene sceneID="jmm-SY-Qls">
             <objects>
-                <viewController id="eBz-3P-J12" customClass="ShowInfoViewController" customModule="Things_to_Do" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowInfoViewController" id="eBz-3P-J12" customClass="ShowInfoViewController" customModule="Things_to_Do" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gKT-V1-OsW"/>
                         <viewControllerLayoutGuide type="bottom" id="74A-V9-jQu"/>
@@ -169,15 +172,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Item Info" id="WEX-ML-4OE">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IVO-jT-nZd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zZ5-yI-yeF"/>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton2" destination="IVO-jT-nZd" id="oh6-2H-Ze4"/>
                         <outlet property="infoComplete" destination="Nlh-vg-xaX" id="sWV-2c-FOq"/>
                         <outlet property="infoDes" destination="zqp-kB-XtL" id="6xd-Vr-4yh"/>
                         <outlet property="infoTitle" destination="7UH-7l-oLf" id="Ffd-tc-c0j"/>
+                        <outlet property="saveButton" destination="zZ5-yI-yeF" id="3ed-ZT-NJt"/>
+                        <segue destination="3Zc-Qv-8i6" kind="unwind" identifier="unwindToTable" unwindAction="unwindToTableWithSegue:" id="sID-G7-5Kv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvz-rM-tul" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3Zc-Qv-8i6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2581.5999999999999" y="698.5007496251875"/>
         </scene>

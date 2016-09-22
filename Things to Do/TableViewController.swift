@@ -75,12 +75,13 @@ var currentIndexPath = IndexPath(row: 0, section: 0)
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
-    @IBAction func showInfo(_ sender: UITableViewCell) {
-        let modalViewController = ShowInfoViewController()
-        modalViewController.modalPresentationStyle = .overCurrentContext
-        present(modalViewController, animated: true, completion: nil)
-    }
+    /*@IBAction func showInfo(_ sender: UITableViewCell) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ShowInfoViewController") as! ShowInfoViewController
+        self.present(vc, animated: true, completion: nil)
+    }*/
     
+    @IBAction func unwindToTable(segue: UIStoryboardSegue){}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +91,18 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    /*override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showInfo()
+    }*/
+    
+    func showInfo() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = self
+        let vc = storyboard.instantiateViewController(withIdentifier: "ShowInfoViewController") as! ShowInfoViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func refresh() {
@@ -151,7 +164,7 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         currentDes = descriptions[indexPath.row]
         currentBool = itemBools[indexPath.row]
         currentIndexPath = indexPath
-        showInfo(cell!)
+        showInfo()
         
     }
     
@@ -167,18 +180,28 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     func checkRemove2(_ indexPath: IndexPath) {
         print("removing check")
+        print(indexPath)
         let cell = tableView.cellForRow(at: indexPath)
+        print(cell?.textLabel?.text)
         cell?.accessoryType = .none
         itemBools[indexPath.row] = false
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func checkItem2(_ indexPath: IndexPath) {
         print("checking item")
+        print(indexPath)
         let cell = tableView.cellForRow(at: indexPath)
+        print(cell?.textLabel?.text)
         cell?.accessoryType = .checkmark
         itemBools[indexPath.row] = true
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func swiped(gesture: UISwipeGestureRecognizer)
@@ -189,20 +212,20 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
                 
             case UISwipeGestureRecognizerDirection.right:
                 print("Swiped Right")
-                let tapLocation = gesture.location(in: self.tableView)
-                if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                let tapLocation = gesture.location(in: tableView)
+                if let tapIndexPath = tableView.indexPathForRow(at: tapLocation) {
                     itemBools[tapIndexPath.row] = true
-                    if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
+                    if let tappedCell = tableView.cellForRow(at: tapIndexPath) {
                         checkItem(tappedCell)
                     }
                 }
                 
             case UISwipeGestureRecognizerDirection.left:
                 print("Swiped Left")
-                let tapLocation = gesture.location(in: self.tableView)
-                if let tapIndexPath = self.tableView.indexPathForRow(at: tapLocation) {
+                let tapLocation = gesture.location(in: tableView)
+                if let tapIndexPath = tableView.indexPathForRow(at: tapLocation) {
                     itemBools[tapIndexPath.row] = false
-                    if let tappedCell = self.tableView.cellForRow(at: tapIndexPath) {
+                    if let tappedCell = tableView.cellForRow(at: tapIndexPath) {
                         checkRemove(tappedCell)
                     }
                 }

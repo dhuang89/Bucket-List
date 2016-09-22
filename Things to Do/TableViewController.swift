@@ -62,6 +62,9 @@ let newItem3 = listElements(n: "Finish this app",
                            ib: false,
                            d: "I want a good grade in CS 4720")
 
+
+var listItems = [newItem, newItem1, newItem2, newItem3]
+
 var itemBools = [false, false, false, false]
 var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue", "Finish this app"]
 var currentInfo = ""

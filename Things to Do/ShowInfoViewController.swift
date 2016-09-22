@@ -48,6 +48,9 @@ class ShowInfoViewController: UIViewController {
     
     //save button function
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        infoTitle.addTarget(self,
+                            action: #selector(titleDidChange),
+                            for: UIControlEvents.editingChanged)
         self.performSegue(withIdentifier: "unwindToTable", sender: self)
     }
     
@@ -60,6 +63,14 @@ class ShowInfoViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func titleDidChange(textField:UITextField) {
+        print("you changed the title field!!")
+    }
+    
+    func descriptionDidChange(textView:UITextView) {
+        print("you changed the description!!")
     }
 
     /*

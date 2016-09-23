@@ -77,6 +77,7 @@ var currentChange = 0
 var currentName = ""
 var newDesc = ""
 var newTitle = ""
+var editDesc = ""
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
@@ -84,6 +85,8 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         let cell = tableView.cellForRow(at: currentIndexPath)
         
         cell?.textLabel?.text = currentInfo
+        
+        descriptions[currentIndexPath.row] = editDesc
         
         if currentChange == 0 {
             cell?.accessoryType = .checkmark

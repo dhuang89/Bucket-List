@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		7E906A161D9082B100762E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B92C31D89EDDB006A76D4 /* AppDelegate.swift */; };
 		7EF193F91D92CCC300DFD27C /* ShowInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC57A1D907BC300832730 /* ShowInfoViewController.swift */; };
-		950DC5751D90497400832730 /* The-Bucket-List-Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 950DC5741D90497400832730 /* The-Bucket-List-Logo.jpg */; };
 		950DC5771D9049C700832730 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC5761D9049C700832730 /* Launch Screen.storyboard */; };
 		950DC5791D904F5E00832730 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC5781D904F5E00832730 /* AddViewController.swift */; };
+		951EF6321D94D280003B32D7 /* The-Bucket-List-Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 951EF6311D94D280003B32D7 /* The-Bucket-List-Logo.jpg */; };
 		954B92C91D89EDDB006A76D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 954B92C71D89EDDB006A76D4 /* Main.storyboard */; };
 		954B92CB1D89EDDB006A76D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954B92CA1D89EDDB006A76D4 /* Assets.xcassets */; };
 		957686CA1D89F976009567F0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957686C91D89F976009567F0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		950DC5741D90497400832730 /* The-Bucket-List-Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "The-Bucket-List-Logo.jpg"; sourceTree = "<group>"; };
 		950DC5761D9049C700832730 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		950DC5781D904F5E00832730 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		950DC57A1D907BC300832730 /* ShowInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInfoViewController.swift; sourceTree = "<group>"; };
+		951EF6311D94D280003B32D7 /* The-Bucket-List-Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "The-Bucket-List-Logo.jpg"; sourceTree = "<group>"; };
 		954B92C01D89EDDB006A76D4 /* Things to Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Things to Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		954B92C31D89EDDB006A76D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		954B92C81D89EDDB006A76D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		954B92C21D89EDDB006A76D4 /* Things to Do */ = {
 			isa = PBXGroup;
 			children = (
-				950DC5741D90497400832730 /* The-Bucket-List-Logo.jpg */,
+				951EF6311D94D280003B32D7 /* The-Bucket-List-Logo.jpg */,
 				954B92C31D89EDDB006A76D4 /* AppDelegate.swift */,
 				954B92C71D89EDDB006A76D4 /* Main.storyboard */,
 				957686C91D89F976009567F0 /* TableViewController.swift */,
@@ -134,8 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				954B92CB1D89EDDB006A76D4 /* Assets.xcassets in Resources */,
-				950DC5751D90497400832730 /* The-Bucket-List-Logo.jpg in Resources */,
 				950DC5771D9049C700832730 /* Launch Screen.storyboard in Resources */,
+				951EF6321D94D280003B32D7 /* The-Bucket-List-Logo.jpg in Resources */,
 				954B92C91D89EDDB006A76D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

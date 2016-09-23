@@ -57,6 +57,7 @@ class ShowInfoViewController: UIViewController {
     
     //save button function
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        editDesc = infoDes.text
         self.performSegue(withIdentifier: "unwindToTable", sender: self)
     }
     
@@ -79,9 +80,6 @@ class ShowInfoViewController: UIViewController {
         currentInfo = textField.text!
     }
     
-    func descriptionDidChange(textView:UITextView) {
-        print("you changed the description!!")
-    }
 
     /*
     // MARK: - Navigation

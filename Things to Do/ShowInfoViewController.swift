@@ -76,6 +76,7 @@ class ShowInfoViewController: UIViewController {
     
     func titleDidChange(textField:UITextField) {
         print("you changed the title field!!")
+        currentInfo = textField.text!
     }
     
     func descriptionDidChange(textView:UITextView) {

@@ -76,11 +76,14 @@ var currentIndexPath = IndexPath(row: 0, section: 0)
 var currentChange = 0
 var currentName = ""
 var newDesc = ""
+var newTitle = ""
 
 class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     @IBAction func unwindToTable(segue: UIStoryboardSegue){
         let cell = tableView.cellForRow(at: currentIndexPath)
+        
+        cell?.textLabel?.text = currentInfo
         
         if currentChange == 0 {
             cell?.accessoryType = .checkmark
@@ -161,7 +164,6 @@ class TableViewController: UITableViewController, UIGestureRecognizerDelegate {
         currentDes = descriptions[indexPath.row]
         currentBool = itemBools[indexPath.row]
         currentIndexPath = indexPath
-        
     }
     
     func checkRemove(_ cell: UITableViewCell) {

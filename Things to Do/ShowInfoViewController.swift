@@ -35,6 +35,9 @@ class ShowInfoViewController: UIViewController {
         infoComplete.addTarget(self, action: #selector(changeStatus), for: .touchUpInside)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        infoTitle.addTarget(self,
+                            action: #selector(titleDidChange),
+                            for: UIControlEvents.editingChanged)
         // Do any additional setup after loading the view.
     }
 
@@ -54,11 +57,11 @@ class ShowInfoViewController: UIViewController {
     
     //save button function
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
-        infoTitle.addTarget(self,
-                            action: #selector(titleDidChange),
-                            for: UIControlEvents.editingChanged)
         self.performSegue(withIdentifier: "unwindToTable", sender: self)
     }
+    
+
+
     
     @IBAction func changeStatus(_ sender: UISegmentedControl) {
         switch infoComplete.selectedSegmentIndex {

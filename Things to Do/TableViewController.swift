@@ -8,63 +8,6 @@
 
 import UIKit
 
-// struct that creates new list elements, has methods to access/mutate the elements
-
-struct listElements {
-    var name: String
-    var itemBools: Bool
-    var descriptions: String
-    
-    init(n:String, ib:Bool, d:String) {
-        name = n
-        itemBools = ib
-        descriptions = d
-    }
-    
-    // accessors, mutators for each attribute of listElement struct
-    func getName() -> String{
-        return name
-    }
-    mutating func setName(n:String) {
-        name = n
-    }
-    
-    func getItemBools() -> Bool {
-        return itemBools
-    }
-    mutating func setItemBools(b:Bool) {
-        itemBools = b
-    }
-    
-    func getDescriptions() -> String {
-        return descriptions
-    }
-    mutating func setDescriptions(d:String) {
-        descriptions = d
-    }
-    
-    
-}
-
-let newItem = listElements(n: "Go skydiving",
-                           ib: false,
-                           d: "Jump off a plane and land alive!")
-
-let newItem1 = listElements(n: "High five Dean Groves",
-                           ib: false,
-                           d: "Give Dean Groves a great high five!")
-
-let newItem2 = listElements(n: "Beat Pokemon Blue",
-                           ib: false,
-                           d: "Stuck on the elite four")
-
-let newItem3 = listElements(n: "Finish this app",
-                           ib: false,
-                           d: "I want a good grade in CS 4720")
-
-
-var listItems = [newItem, newItem1, newItem2, newItem3]
-
 var itemBools = [false, false, false, false]
 var items = ["Go skydiving", "High five Dean Groves", "Beat Pokemon Blue", "Finish this app"]
 var currentInfo = ""
